@@ -17,8 +17,8 @@ export default function Todo() {
             <p>Query function status: {todosIdsQuery.fetchStatus}</p>
             <div>{todosIdsQuery.data?.map((id) => <p key={id}>id: {id}</p>)}</div>
             <ul>
-                {todosQueries.map(({ data }) => (
-                    <li key={data?.id}>
+                {todosQueries.map(({ data }, i) => (
+                    <li key={i}>
                         <div>ID : {data?.id}</div>
                         <span>
                             <strong>Title:</strong> {data?.title}, {""}
