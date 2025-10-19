@@ -1,7 +1,7 @@
 // import { useIsFetching } from '@tanstack/react-query';
 import { useTodos, useTodosIds } from '../services/queries'
 
-export default function Todo() {
+export default function Todos() {
 
     // const isFetching = useIsFetching()
 
