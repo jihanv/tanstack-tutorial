@@ -39,7 +39,7 @@ export default function Todos() {
                 <br />
                 <input placeholder='Description' {...register("description")}></input>
                 <br />
-                <input type="submit" disabled={createTodoMutation.isPending}></input>
+                <input type="submit" disabled={createTodoMutation.isPending} value={createTodoMutation.isPending ? "Creating..." : "Create Todo"}></input>
 
             </form>
             <p>Query function status: {todosIdsQuery.fetchStatus}</p>
