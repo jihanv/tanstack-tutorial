@@ -32,5 +32,5 @@ export const createTodo = async (data: Todo) => {
 };
 
 export const updateTodo = async (data: Todo) => {
-  await axiosInstance.put(`todos/${data.id}`);
+  await axiosInstance.put(`todos/${data.id}`, data);
 };

@@ -46,7 +46,7 @@ export function useUpdateTodo() {
         // Invalidate or refetch a query after mutation
         await queryClient.invalidateQueries({ queryKey: ["todos"] });
         await queryClient.invalidateQueries({
-          queryKey: ["todos", { id: variables.id }],
+          queryKey: ["todo", { id: variables.id }], //Check queries.ts to see why it "todo" not "todos"
         });
       }
     },
