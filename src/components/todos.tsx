@@ -1,6 +1,6 @@
 // import { useIsFetching } from '@tanstack/react-query';
 import { useForm, type SubmitHandler } from 'react-hook-form';
-import { useCreateTodo, useUpdateTodo } from '../services/mutations';
+import { useCreateTodo, useDeleteTodo, useUpdateTodo } from '../services/mutations';
 import { useTodos, useTodosIds } from '../services/queries'
 import type { Todo } from '../types/todo';
 
@@ -23,6 +23,7 @@ export default function Todos() {
     //<Todo> ensures form fields match the Todo type for type safety
     const { register, handleSubmit } = useForm<Todo>()
 
+    const deleteTodoMutation = useDeleteTodo()
 
     const updateTodoMutation = useUpdateTodo();
 
@@ -34,6 +35,10 @@ export default function Todos() {
         if (data) {
             updateTodoMutation.mutate({ ...data, checked: true })
         }
+    }
+
+    const handleDelete = (id: number) => {
+        deleteTodoMutation.mutate(id)
     }
 
     return (
@@ -64,6 +69,12 @@ export default function Todos() {
                                 onClick={() => handleMarkAsDone(data)}
                                 disabled={data?.checked}>
                                 {data?.checked ? "Done" : "Mark as done"}
+                            </button>
+                            <button
+
+                                onClick={() => handleDelete(data?.id!)}
+                                disabled={data?.checked}>
+                                Delete
                             </button>
                         </div>
                     </li>
