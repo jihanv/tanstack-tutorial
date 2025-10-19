@@ -19,13 +19,13 @@ export function useCreateTodo() {
       console.log("success");
     },
 
-    // Invalidate or refetch a query
     onSettled: async (_, error) => {
       console.log("settled");
 
       if (error) {
         console.log(error);
       } else {
+        // Invalidate or refetch a query after mutation
         await queryClient.invalidateQueries({ queryKey: ["todos"] });
       }
     },
