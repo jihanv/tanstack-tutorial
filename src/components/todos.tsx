@@ -31,14 +31,15 @@ export default function Todos() {
         return <span>Loading...</span>;
     }
 
-    const handleMarkAsDone = (data: Todo | undefined) => {
+    const handleMarkAsDone = async (data: Todo | undefined) => {
         if (data) {
-            updateTodoMutation.mutate({ ...data, checked: true })
+            await updateTodoMutation.mutateAsync({ ...data, checked: true })
+            console.log("Success")
         }
     }
 
-    const handleDelete = (id: number) => {
-        deleteTodoMutation.mutate(id)
+    const handleDelete = async (id: number) => {
+        await deleteTodoMutation.mutateAsync(id)
     }
 
     return (
@@ -71,9 +72,7 @@ export default function Todos() {
                                 {data?.checked ? "Done" : "Mark as done"}
                             </button>
                             <button
-
-                                onClick={() => handleDelete(data?.id!)}
-                                disabled={data?.checked}>
+                                onClick={() => handleDelete(data?.id!)}>
                                 Delete
                             </button>
                         </div>
