@@ -12,7 +12,7 @@ export default function Projects() {
                 {isPending ? (<div>loading...</div>)
                     : isError ? (<div>Error: {error.message}</div>)
                         : (<div>
-                            {data.data.map((project) => <p key={project.id}>{project.name}</p>)}
+                            {data.map((project) => <p key={project.id}>{project.name}</p>)}
                         </div>)}
                 <span>Current page: {page}</span>
                 <button onClick={() => setPage((old) => Math.max(old - 1, 0))}>Previous page</button>{" "}
