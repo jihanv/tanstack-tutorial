@@ -1,5 +1,5 @@
-import { useQuery, useQueries } from "@tanstack/react-query";
-import { getTodo, getTodosIds } from "./api";
+import { useQuery, useQueries, keepPreviousData } from "@tanstack/react-query";
+import { getProjects, getTodo, getTodosIds } from "./api";
 
 // Note: queryKey does NOT control what gets fetched from the server.
 // The queryFn is what actually fetches the data.
@@ -22,5 +22,13 @@ export function useTodos(ids: (number | undefined)[] | undefined) {
         queryFn: () => getTodo(id!),
       };
     }),
+  });
+}
+
+export function useProjects(page: number) {
+  return useQuery({
+    queryKey: ["projects", { page }],
+    queryFn: () => getProjects(page),
+    placeholderData: keepPreviousData,
   });
 }

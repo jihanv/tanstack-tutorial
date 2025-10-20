@@ -40,6 +40,7 @@ export default function Todos() {
 
     const handleDelete = async (id: number) => {
         await deleteTodoMutation.mutateAsync(id)
+
     }
 
     return (
